@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<c3p0-config>
+  <default-config>
+  	
+  	<property name="user">c##bdb</property>
+  	<property name="password">bdb</property>
+  	<property name="driverClass">oracle.jdbc.driver.OracleDriver</property>
+  	<property name="jdbcUrl">jdbc:oracle:thin:@//localhost:1521/orcl</property>
+  
+    <!-- <property name="automaticTestTable">con_test</property> -->
+    <property name="checkoutTimeout">3000</property>
+    <property name="idleConnectionTestPeriod">20</property>
+    <property name="initialPoolSize">10</property>
+    <property name="maxIdleTime">30</property>
+    <property name="maxPoolSize">30</property>
+    <property name="minPoolSize">8</property>
+    <property name="maxStatements">50</property>
+
+    <!-- <user-overrides user="test-user">
+      <property name="maxPoolSize">10</property>
+      <property name="minPoolSize">1</property>
+      <property name="maxStatements">0</property>
+    </user-overrides> -->
+
+  </default-config>
+
+  <!-- This app is massive! -->
+  <named-config name="mdb">
+  	<property name="user">c##mdb</property>
+  	<property name="password">mdb</property>
+  	<property name="driverClass">oracle.jdbc.driver.OracleDriver</property>
+  	<property name="jdbcUrl">jdbc:oracle:thin:@//localhost:1521/orcl</property>
+  	
+    <!-- <property name="acquireIncrement">50</property> -->
+    <property name="initialPoolSize">10</property>
+    <property name="minPoolSize">8</property>
+    <property name="maxPoolSize">30</property>
+
+    <!-- intergalactoApp adopts a different approach to configuring statement caching -->
+    <property name="maxStatements">0</property> 
+    <property name="maxStatementsPerConnection">5</property>
+
+    <!-- he's important, but there's only one of him -->
+    <!-- <user-overrides user="master-of-the-universe"> 
+      <property name="acquireIncrement">1</property>
+      <property name="initialPoolSize">1</property>
+      <property name="minPoolSize">1</property>
+      <property name="maxPoolSize">5</property>
+      <property name="maxStatementsPerConnection">50</property>
+    </user-overrides> -->
+  </named-config>
+</c3p0-config>
